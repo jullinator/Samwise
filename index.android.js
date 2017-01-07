@@ -11,7 +11,7 @@ import {
   Text,
   View
 } from 'react-native';
-import App from './view/Menu'
+import App from './view/App'
 
 
 

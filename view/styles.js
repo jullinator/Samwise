@@ -3,8 +3,8 @@ export default StyleSheet.create({
   menuItem: {
     flex:1,
     flexDirection:'row',
-    borderWidth:1,
-    borderColor:'steelblue'
+    borderWidth:0.5,
+    borderColor:'blue'
   },
   rightMenu:{
     flex:1,
@@ -24,5 +24,11 @@ export default StyleSheet.create({
   price: {
       fontSize: 25,
       color: 'green'
+  },
+  header:{
+    fontSize:30
+  },
+  topicTitle:{
+    textDecorationLine:'underline'
   }
 })

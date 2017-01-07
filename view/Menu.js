@@ -5,24 +5,42 @@ import {
   ListView,
   TouchableOpacity
 } from 'react-native'
-import MenuData from '../model/Menu'
+import Database from '../model/database'
 import styles from './styles'
+
 
 export default class Menu extends Component {
   constructor(props){
     super(props)
     const ds = new ListView.DataSource({rowHasChanged: (r1, r2)=> r1!==r2 })
     this.state = {
-      ds:ds.cloneWithRows(MenuData)
+      ds:ds.cloneWithRows([]),
+      loading:true
     }
   }
+  componentDidMount(){
+      Database.child('menu').on('value', (snap)=>{
+        this.setState((prevState)=>({
+          ds:prevState.ds.cloneWithRows(snap.val()),
+          loading:false
+        }))
+      })
+  }
   render(){
+    const body = this.state.loading ?
+    (
+        <ActivityIndicator />
+    ) :
+    (
+        <ListView
+            enableEmptySections
+            dataSource={this.state.ds}
+            renderRow={this._renderRow}
+        />
+    )
     return (
       <View>
-          <ListView
-              dataSource={this.state.ds}
-              renderRow={this._renderRow}
-          />
+        {body}
       </View>
     )
   }
