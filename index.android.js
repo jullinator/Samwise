@@ -11,26 +11,31 @@ import {
   Text,
   View
 } from 'react-native';
+import codePush from 'react-native-code-push'
+import App from './view/Menu'
 
-export default class Samwise extends Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.android.js
-        </Text>
-        <Text style={styles.instructions}>
-          Double tap R on your keyboard to reload,{'\n'}
-          Shake or press menu button for dev menu
-        </Text>
-      </View>
-    );
-  }
-}
 
+
+/*
+- Added Code Push, with the option of check each time app is resumed from background.
+
+- Will later wrap the Menu component in a App component from view-folder, that contains:
+ * Loading
+ * Home
+ * Menu
+
+- Also have to install Firebase, and add a listener.
+* Firebase store should be a new project called pbl-code,
+which all fututre cases will use as a database.
+-
+
+*/
+AppRegistry.registerComponent('Samwise', () => codePush({
+  checkFrequency:codePush.CheckFrequency.ON_APP_RESUME
+})(App));
+
+
+// Just for Reference of styling later on
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -49,5 +54,3 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
 });
-
-AppRegistry.registerComponent('Samwise', () => Samwise);
