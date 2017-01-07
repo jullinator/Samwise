@@ -11,7 +11,6 @@ import {
   Text,
   View
 } from 'react-native';
-import codePush from 'react-native-code-push'
 import App from './view/Menu'
 
 
@@ -30,10 +29,12 @@ which all fututre cases will use as a database.
 -
 
 */
-AppRegistry.registerComponent('Samwise', () => codePush({
-  checkFrequency:codePush.CheckFrequency.ON_APP_RESUME
-})(App));
+AppRegistry.registerComponent('Samwise', ()=> App );
 
+/*codePush({
+  checkFrequency:codePush.CheckFrequency.ON_APP_RESUME
+})(App)
+*/
 
 // Just for Reference of styling later on
 const styles = StyleSheet.create({

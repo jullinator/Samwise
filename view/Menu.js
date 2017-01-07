@@ -30,7 +30,7 @@ export default class Menu extends Component {
       <View>
         <Text style={[styles.title]} >{rowData.title}</Text>
         <Text style={[styles.description]}>{rowData.description}</Text>
-        <Text style={[styles.price]}>{rowData.price}</Text>
+        <Text style={[styles.price]}>{rowData.price} $</Text>
       </View>
     )
   }
